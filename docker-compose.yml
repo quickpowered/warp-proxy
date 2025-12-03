@@ -1,14 +1,13 @@
-version: "3.0"
-
 services:
-  cloudflare-warp-proxy:
-    image: seiry/cloudflare-warp-proxy
-    network_mode: bridge
+  warp-proxy:
+    container_name: warp-proxy
+    build:
+      dockerfile: ./Dockerfile.warp
     ports:
       - 40000:40000
     restart: unless-stopped
-    environment:
-      - LICENSE=you-own-key
+    # environment:
+    # - LICENSE=you-own-key
     logging:
       driver: json-file
       options:
